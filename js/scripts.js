@@ -18,7 +18,7 @@ var sieve = function(number) {
     }
     nonPrimeArray.forEach(function(numToRemove) {
       var position = numberArray.indexOf(numToRemove);
-      
+
       if (position > -1) {
         numberArray.splice(position, 1);
       }
@@ -26,3 +26,17 @@ var sieve = function(number) {
   });
   return numberArray;
 };
+
+
+$(document).ready(function() {
+  $("form#number").submit(function(event) {
+    var number2 = parseInt($("input#number1").val());
+    var result = sieve(number2);
+
+    $(".primes").text(result);
+
+    $("#result").show();
+
+    event.preventDefault();
+  });
+});
